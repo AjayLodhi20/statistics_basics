@@ -30,8 +30,13 @@ class Median:
         loop = frequency[0]
 
         for i in range(len(frequency)):
+            loop += frequency[i]
+            cf.append(loop)
+        return cf
 
-
+    def n_by_2(self):
+        total_f = self.cum_freq()[-1]
+        return total_f / 2
 
 
 
