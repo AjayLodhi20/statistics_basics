@@ -11,17 +11,27 @@ class Median:
         self.data = data
 
 
-    def sorting(self):
-        lower = []
-        upper=[]
-        freq = []
-        for one_dict in self.data:
-            low = one_dict['lower_limit']
-            up = one_dict['upper_limit']
-            frq = one_dict['frequency']
-            lower.append(low)
-            upper.append(up)
-            freq.append(frq)
+    def dividing(self):
+        lower = [i['lower_limit'] for i in self.data]
+        upper = [i['upper_limit'] for i in self.data]
+        frequency = [i['frequency'] for i in self.data]
+        return lower, upper, frequency
+
+
+    def x(self):
+        lower, upper, _ = self.dividing()
+
+        new_x = [(x+y)/2 for x,y in zip(lower,upper)]
+        return new_x
+
+    def cum_freq(self):
+        _, _, frequency = self.dividing()
+        cf = []
+        loop = frequency[0]
+
+        for i in range(len(frequency)):
+
+
 
 
 
