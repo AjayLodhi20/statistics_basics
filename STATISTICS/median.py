@@ -27,18 +27,36 @@ class Median:
     def cum_freq(self):
         _, _, frequency = self.dividing()
         cf = []
-        loop = frequency[0]
+        loop = 0
 
         for i in range(len(frequency)):
             loop += frequency[i]
             cf.append(loop)
         return cf
 
-    def n_by_2(self):
+    def n_by_2_for_further_calc(self):
         total_f = self.cum_freq()[-1]
-        return total_f / 2
+        new_total = total_f / 2
+
+        for_l = None
+        for loop in self.cum_freq():
+            if loop <= new_total:
+                for_l = loop
+            median_class = self.cum_freq().index(for_l) + 1
+            median_class_2 = self.cum_freq()[median_class]
+            lower, _, _ = self.dividing()
+            lower_limit = lower[median_class + 1]
+            _, upper, _ = self.dividing()
+            upper_limit = upper[median_class + 1]
+            return lower_limit, upper_limit, median_class_2
+        return None
 
 
 
+
+
+sol1 = Median(frequency_data_1)
+print(sol1.cum_freq())
+print(sol1.n_by_2_for_further_calc())
 
 
